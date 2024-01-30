@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MerkelMain.h"
+#include "CSVReader.h"
 
 MerkelMain::MerkelMain()
 {
@@ -21,15 +22,14 @@ void MerkelMain::init()
 
 void MerkelMain::loadOrderBook()
 {
-    _orders.push_back( OrderBookEntry{116.26935391, 0.00913224, "3/17/2020  5:01:55 PM", "ETH/USDT", OrderBookType::bid});
-    _orders.push_back( OrderBookEntry{120.9347855, 0.13778321, "3/17/2020  5:01:55 PM", "ETH/USDT", OrderBookType::ask});
-    _orders.push_back( OrderBookEntry{10499.8598143, 0.00163503, "3/17/2020  5:01:55 PM", "DOGE/USDT", OrderBookType::bid});
+
+    _orders = CSVReader::readCSV("indata1.csv");
 
 }
 
 void MerkelMain::printMenu()
 {
-    std::cout << "-- Menu --" << std::endl;
+    std::cout << "\n\n-- Menu --" << std::endl;
 
     std::cout << "1: Help" << std::endl;
 
@@ -54,7 +54,7 @@ void MerkelMain::printHelp()
 
 void MerkelMain::printMarketStatus()
 {
-    std::cout << "OrderBook contains: " << _orders.size()<< " entries" << std::endl;
+    std::cout << "OrderBook contains: " << _orders.size()<< " entries" << std::endl;    
 }
 
 void MerkelMain::enterOffer()

@@ -82,6 +82,5 @@ std::vector<OrderBookEntry> CSVReader::readCSV(const std::string &fileName)
         std::cout << " Can't open the file";
     }
 
-    std::cout << "We eread " << entries.size();
     return entries;
 }
